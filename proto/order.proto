@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package order;
+
+service OrderService {
+  rpc CreateOrder (CreateOrderRequest) returns (OrderResponse);
+  rpc ListOrders (ListOrdersRequest) returns (ListOrdersResponse);
+  rpc GetOrder (GetOrderRequest) returns (OrderResponse);
+}
+
+message OrderItemInput {
+  int32 pid = 1;
+  int32 qty = 2;
+}
+
+message CreateOrderRequest {
+  int32 uid = 1;
+  repeated OrderItemInput items = 2;
+}
+
+message OrderDetail {
+  int32 pid = 1;
+  int32 qty = 2;
+  double unit_price = 3;
+}
+
+message OrderResponse {
+  int32 oid = 1;
+  int32 uid = 2;
+  double discount = 3;
+  repeated OrderDetail items = 4;
+  double subtotal = 5;
+  double total_amount = 6;
+  int32 membership_score = 7;
+  double discount_rate = 8;
+}
+
+message ListOrdersRequest {
+  int32 uid = 1;
+}
+
+message ListOrdersResponse {
+  repeated OrderResponse items = 1;
+}
+
+message GetOrderRequest {
+  int32 oid = 1;
+  int32 requester_uid = 2;
+  string requester_role = 3;
+}

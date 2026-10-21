@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+
+# Test coverage
+coverage/
+
+# Editor and operating system files
+.vscode/
+.DS_Store
+Thumbs.db
